@@ -5,15 +5,6 @@ import type { RootState } from "../store/store";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, Film, Loader2 } from "lucide-react";
 
-interface Movie {
-    id: number;
-    title: string;
-    overview: string;
-    poster_path: string;
-    release_date: string;
-    vote_average: number;
-}
-
 const MovieList: React.FC = () => {
     const dispatch = useDispatch();
     const movies = useSelector((state: RootState) => state.movies.movies);
@@ -82,10 +73,10 @@ const MovieList: React.FC = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
             {movies.map((movie: any) => (
-                <Card key={movie.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="aspect-[2/3] relative bg-muted">
+                <Card key={movie.id} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-600">
+                    <div className="aspect-[2/3] relative bg-gray-300">
                         {movie.poster_path ? (
                             <img 
                                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -93,14 +84,14 @@ const MovieList: React.FC = () => {
                                 className="object-cover w-full h-full"
                             />
                         ) : (
-                            <div className="flex items-center justify-center h-full">
-                                <Film className="w-16 h-16 text-muted-foreground" />
+                            <div className="flex items-center justify-center h-full bg-gray-300">
+                                <Film className="w-12 h-12 md:w-16 md:h-16 text-black-500" />
                             </div>
                         )}
                     </div>
-                    <CardHeader>
-                        <CardTitle className="text-lg line-clamp-2">{movie.title}</CardTitle>
-                        <CardDescription>
+                    <CardHeader className="p-3 md:p-4">
+                        <CardTitle className="text-base md:text-lg line-clamp-2">{movie.title}</CardTitle>
+                        <CardDescription className="text-xs md:text-sm">
                             {movie.release_date && new Date(movie.release_date).getFullYear()}
                             {movie.vote_average > 0 && (
                                 <span className="ml-2">
@@ -110,8 +101,8 @@ const MovieList: React.FC = () => {
                         </CardDescription>
                     </CardHeader>
                     {movie.overview && (
-                        <CardContent>
-                            <p className="text-sm text-muted-foreground line-clamp-3">
+                        <CardContent className="p-3 md:p-4 pt-0">
+                            <p className="text-xs md:text-sm text-black line-clamp-3">
                                 {movie.overview}
                             </p>
                         </CardContent>
