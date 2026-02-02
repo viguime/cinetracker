@@ -48,7 +48,7 @@ const movieSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       });
-    },  
+  },
 });
 
 export const getMovies = createAsyncThunk(
