@@ -3,7 +3,7 @@ import { Film } from 'lucide-react'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-500 dark:from-slate-900 dark:to-slate-800">
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 py-4 md:py-8">
         <header className="mb-6 md:mb-8 text-center">
           <div className="flex items-center justify-center gap-2 md:gap-3 mb-2">
